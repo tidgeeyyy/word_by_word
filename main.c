@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
-#include <windows.h>  // For Sleep()
+#include <windows.h>
 
 int score = 0;
 
@@ -33,13 +33,27 @@ void Menu() {
         printf("\n\t\t\t\t\t\t       WORD BY WORD");
         printf("\n\t\t\t\t\t--------------------------------------------");
         printf("\n\t\t\t\t\t> Press s to START");
+        printf("\n\t\t\t\t\t> Press h to view RECENT SCORE RECORDED");
+        printf("\n\t\t\t\t\t> Press m to read GAME MECHANICS");
         printf("\n\t\t\t\t\t> Press e to EXIT");
         printf("\n\t\t\t\t\t--------------------------------------------");
         printf("\n\n\t\t\t\t\t\tEnter here: ");
-        scanf(" %c", &press);  // added space before %c to handle newline issues
+        scanf(" %c", &press);
 
         if (press == 's') {
             break;
+        } else if (press == 'h') {
+            // Add functionality to view recent scores
+            printf("\n\n\t\t\t\t\tYour recent score: %d", score);
+            delay(3);
+        } else if (press == 'm') {
+            // Add functionality to display game mechanics
+            printf("\n\n\t\t\t\t\tGAME MECHANICS:");
+            printf("\n\t\t\t1. You will be shown a sentence word by word.");
+            printf("\n\t\t\t2. Memorize the sentence and type it in with underscores replacing spaces.");
+            printf("\n\t\t\t3. You earn points for each correct sentence.");
+            printf("\n\t\t\t4. If you make a mistake, the game ends.");
+            delay(5);
         } else if (press == 'e') {
             exit(0);
         }
@@ -53,7 +67,6 @@ void playLevel(const char *sentence, const char *correctAnswer) {
     printf("\n\n\t\t\t\t\tBe ready to memorize the following words\n");
     delay(2);
 
-    // Display the sentence word by word
     char temp[100];
     strcpy(temp, sentence);
     char *word = strtok(temp, " ");
